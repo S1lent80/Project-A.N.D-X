@@ -1,0 +1,2 @@
+# Project-A.N.D-X
+A project started during the time of Backtrack 5 r3, but was left "unfinished" due to some complications with the ideas, but now is brought back up in hopes that it will actually turn out usefull in the Pentesting field, Project includes: Wireless Hacking, Web site [fuzzing, crawling, SQL Exploitation, "dirb", etc], OS Fingerprinting, "Metasploit", Exploit developement, Exploits, Some custom Social Engineering Tactics, and  much more.
