@@ -78,17 +78,29 @@ if __name__ == '__main__':
         for status in tweepy.Cursor(api.home_timeline).items(10):
             print plus + " Testing program (Home Page [ API ])\n"
             print(status.text)
+            # file_status = open("/root/andx/X-TCPA/status/test_status.txt","w")
+            # file_status.write(status.text)
+            # file_status.close()
     elif options.json_store == '1':
         for status in tweepy.Cursor(api.home_timeline).items(10):
             print plus + " Processing and Storing JSON\n"
             process or store(status. json)
+            # file_json_stream = open("/root/andx/X-TCPA/status/json_stream.txt","w")
+            # file_json_stream.write(status. json)
+            # file_json_stream.close()
     elif options.list_friends == '1':
         for firend in tweepy.Cursor(api.friends).items():
             process or store(friend. json)
+            # file_friend_info = open("/root/andx/X-TCPA/status/friend_info.txt","w")
+            # file_friend_info.write(friend. json)
+            # file_friend_info.close()
     elif options.tweet_list == '1':
         print plus + " Gathering all Tweets\n"
         for tweet in tweepy.Cursor(api.user_timeline).items():
             process or store(tweet. json)
+            # file_tweet_info = open("/root/andx/X-TCPA/status/tweet_info.txt","w")
+            # file_tweet_info.write(tweet. json)
+            # file_tweet_info.close()
     elif options.tweet_1_per_line == '1':
         print plus + " Printing tweets 1 per line\n"
         proc_or_store()
