@@ -196,7 +196,6 @@ if os.path.exists(CONFIG):
             dir_02 = raw_input("Enter the new directory: ")
             while len(dir_02) == 0:
                 print minus + " I need a directory...\n"
-                return dir_02
             if os.path.exists(dir_02) and os.path.join(dir_02, "/config") or os.path.join(dir_02, "config"):
                 file1.write("Directory [ Alt ] Config (config):      " + dir_02 + "\n")
             else:
