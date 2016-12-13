@@ -88,6 +88,12 @@ def opts():
         print "\033[31m[-]\033[30m Option not found..."
         sys.exit(1)
 
+# **************************************************************************************************************************************************************************
+# st.int(a) = 1.st.int[]{'1':'A' -> '2':'B' <- '$a':'C':$result};
+# st.int(b) = 2.st.int[]{'1':'${a}' -> '2':'$B + $C' <- '$a[$B + $C]':$result};
+# func main(int *(a), int *(b) -> $result[int *(a + ${$[a]} * b + ${$[b]})]) { a1 = char &*int[{2}] >> ${*} + ${'$a' + $b >> %}; result2 = a1 * 2 / 100; os.print $result }
+# **************************************************************************************************************************************************************************
+
 ## Main ##
 os.system("clear")
 
@@ -179,6 +185,7 @@ if os.path.exists(LOGS):
 else:
     try:
         os.makedirs(LOGS)
+        file1 = open(xconfig,"w")
         pass
     except Exception as e:
         print minus + " Could not create directory..."
@@ -263,7 +270,6 @@ if os.path.exists(XRTK):
             except Exception as e2:
                 print exc + " Could not create directory: " + xgs + XRTK + xge + " error -> " + str(e2)
                 file2.write("[ ERROR ]: " + str(e2) + "\n")
-                file2.close()
         if not 'M' or 'm' or 'D' or 'd' in question_01 or len(question_01) == 0:
             print minus + " Input needed: please type an [ 'M' ('m') = Moved or 'D' ('d') = Deleted ]...\n"
             pass
@@ -276,7 +282,6 @@ else:
     try:
         os.makedirs(XRTK)
         file1.write("Directory [ Xrtk (xrtk)]:         " + XRTK + " created...\n")
-        file1.close()
     except Exception as e3:
         print minus + " Could not create directory: " + xgs + XRTK + xge + " error -> " + str(e3)
         file2.write("[ ERROR ]: " + str(e3) + "\n")
