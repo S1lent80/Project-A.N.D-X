@@ -547,7 +547,115 @@ else:
         print exc + " Could not create directory: " + xgs + SITE + xge + " error -> " + str(e17)
         print info + " Exiting..."
         sys.exit(1)
-
+# Create the sub-directories for the main directory [ Site (site)]
+# -> [SUB_DIR] >> [Site (site)] >>> [Site >> downloads (site)]
+if os.path.exists(site_downloads):
+    print xgs + "|_" + xge + site_downloads + " exists..."
+    file1.write("|_[SUB_DIR] - " + site_downloads + "\n")
+    if os.stat(site_downloads) == 0:
+        print minus + " The directory: " + xgs + site_downloads + xge + " existed, but isn't there anymore..."
+        question01 = raw_input("Was the directory [M]oved or [D]eleted? : ")
+        while len(question01) == 0:
+            print minus + " I need a directory...\n"
+        if 'M' or 'm' in question01:
+            newDir = raw_input("Enter the new directory: ")
+            while len(newDir) == 0 or newDir == False:
+                print("")
+                print info + " I need a(n) directory, try typing the path...\n"
+            if os.path.exists(newDir) or os.path.join(newDir,"/downloads") or os.path.join(newDir,"downloads"):
+                file1.write("Directory [Site (site)] Alt:    " + newDir + "\n")
+                pass
+            else:
+                print minus + " Could not find directory..."
+                print info + " Exiting..."
+                sys.exit(1)
+        elif 'D' or 'd' in question01:
+            print info + " Creating directory: " + xgs + site_downloads + xge
+            try:
+                os.makedirs(site_downloads)
+                pass
+            except KeyboardInterrupt:
+                # print info + " Manual Program Termination (Ctrl + C)"
+                sys.exit(1)
+            except Exception as e18:
+                print exc + " Could not create the directory: " + xgs + site_downloads + xge + " error -> " + str(e18)
+                print info + " Exiting..."
+                sys.exit(1)
+        elif not 'M' or 'm' or 'D' or 'd' in question01 or len(question01) == 1 - 1:
+            print minus + " Please enter an [M] for Moved or [D] for Deleted..."
+            pass
+        else:
+            print minus + " Invalid input.."
+            pass
+else:
+    print info + " Creating directory: " + xgs + site_downloads + xge
+    try:
+        os.makedirs(site_downloads)
+        try:
+            file1.write("|_[SUB_DIR] - " + site_downloads + " Created" + "\n")
+        except Exception as e23:
+            print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e23)
+            pass
+    except Exception as e19:
+        print exc + " Could not create directory: " + xgs + site_downloads + xge + " error -> " + str(e19)
+        print info + " Exiting..."
+        sys.exit(1)
+if os.path.exists(site_images):
+    print xgs + "|_" + xge + site_images + " exists..."
+    try:
+        file1.write("|_[SUB-DIR] - " + site_images + " exists...\n")
+        pass
+    except Exception as e20:
+        print minus + " Could not write to file: " + xgs + file1 + xge + " error -> " + str(e20)
+        pass
+    if os.stat(site_images) == 0:
+        print minus + " Directory: " + xgs + site_images + xge + " existed, but isn't there anymore..."
+        question02 = raw_input("Was the directory [M]oved or [D]eleted? : ")
+        while len(question02) == 0 or question02 == False:
+            print("")
+            print info + " I need an input, please select [M] for Moved or [D] for Deleted...\n"
+        if 'M' or 'm' in question02:
+            dir4 = raw_input("Enter the new directory: ")
+            while len(dir4) == 0 or len(dir) == False:
+                print info + " I need a(n) directory, try typing the path...\n"
+            if os.path.exists(dir4) or os.path.join(dir4,"/images") or os.path.join(dir4,"images"):
+                try:
+                    file1.write("|_[SUB-DIR]:Alt - " + dir4 + "\n")
+                    pass
+                except Exception as e21:
+                    print minus + " Couldn't write to file: " + xgs + xconfig + xge + " error -> " + str(e21)
+                    pass
+            else:
+                print minus + " Could not find the directory specified..."
+        elif 'D' or 'd' in question02:
+            print info + " Creating directory: " + xgs + site_images + xge
+            try:
+                os.makedirs(site_images)
+            except KeyboardInterrupt:
+                # print info + " Manual Program Termination (Ctrl + C)"
+                sys.exit(1)
+            except Exception as e22:
+                print exc + " Could not create directory: " + xgs + site_images + xge + " error -> " + str(e22)
+                print info + " Exiting..."
+                sys.exit(1)
+        else:
+            print minus + " Option not found..."
+    else:
+        pass
+else:
+    print info + " Creating directory: " + xgs + site_images + xge
+    try:
+        os.makedirs(site_images)
+        try:
+            file1.write("|_[SUB-DIR] - " + site_images + " created...\n")
+        except Exception as e23:
+            print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e23)
+            pass
+    except Exception as e24:
+        print exc + " Could not create directory: " + xgs + site_images + xge + " error -> " + str(e24)
+        print info + " Exiting..."
+        sys.exit(1)
+ 
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 if os.path.exists(XBD):
