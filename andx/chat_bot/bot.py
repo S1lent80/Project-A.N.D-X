@@ -6,11 +6,9 @@ import pytz
 import time
 import astral
 import random
-import filedir
 import datetime
 import platform
 import optparse
-import errorhandler
 from optparse import OptionParser
 from tqdm import *
 from time import sleep
@@ -18,7 +16,10 @@ from sys import platform as osid
 from datetime import datetime, time
 from astral import Astral
 from os import walk
-from errorhandler import errorhandler
+sys.path.insert(0,"modules")
+# import errorhandler
+import filedir 
+# from errorhandler import errorhandler
 from filedir import filecheck
 
 ## ChatBot - [ Als: Nemesis 2 ]  -  Version: 1.0.0  -  Xver: 1.0 ##\
@@ -127,6 +128,8 @@ def cmd_help():
         print textstyle.UNDERLINE + xgs + textstyle.BOLD + "Command / Phrase" + textstyle.END + textstyle.END + xge + "\t\t\t" + textstyle.UNDERLINE + xgs + textstyle.BOLD + "Description" + textstyle.END + xge + textstyle.END + "\n"
         pass
         print " - " + textstyle.BOLD + textcolor_alt.YELLOW + "back" + textcolor_alt.END + textstyle.END + "\t\t\t\t\t" + "Goes back to the default Bot prompt" + "\n"
+        print " - " + textstyle.BOLD + textcolor_alt.YELLOW + "help:error" + textcolor_alt.END + textstyle.END + "\t\t\t\t" + "Launches the help module that helps with errors and other things tied to the project." + "\n"
+        
     elif botcmd_help == 'return' or botcmd_help == 'back' or botcmd_help == 'go back to default prompt' or botcmd_help == 'exit help prompt':
         pass
     else:
@@ -168,13 +171,15 @@ while True:
     if user_input == 'help' or user_input == 'help me' or user_input == 'please, help me' or user_input == 'please help me' or user_input == 'please help' or user_input == 'show help':
         cmd_help()
         pass
-    elif user_input == 'help me with an error' or user_input == 'please help me, I have an error' or user_input == 'error, please help' or user_input == 'I have an error':
+    elif user_input == 'help me with an error' or user_input == 'please help me, I have an error' or user_input == 'error, please help' or user_input == 'I have an error' or user_input == 'help:error':
         errorhandler.errorhandler()
         pass
+    # -------------------------------------------------------------------------------------------------------------------------------------
     elif user_input == 'commands' or user_input == 'prompt.commands' or user_input == 'prompt.cmd()' or user_input == 'prompt.cmd':
         botcmd()
         pass
     
+    # -------------------------------------------------------------------------------------------------------------------------------------
     elif user_input == 'exit' or user_input == 'see ya' or user_input == 'bye' or user_input == 'bye, thank you':
         # print "\nBye, have a nice day :) \n"
         #
@@ -193,6 +198,13 @@ while True:
             print "\nBye, unable to tell if dusk or dawn, maybe the set city is wrong...\n" 
         sleep(2)
         sys.exit()
+    # ----------------------------------------------------------------------------------------------------------------------------------
+    filecheck = raw_input(textcolor_alt.YELLOW + "bot" + textcolor_alt.END + "(" + textstyle.BOLD + textcolor_alt.GREEN + "files_dir" + textcolor_alt.END + textstyle.END + ")> ")
+    elif user_input == "check needed files" or user_input == "check for files" or user_input == "check needed for files" or user_input == "check:files" or user_input == "I need a check of all needed files" or user_input == "i need a check of all files":
+        filedir.filecheck(filecheck)
+    elif user_input == "check directories" or user_input == "check all needed directories" or user_input == "check:dirs" or user_input == "check for directories" or user_input == "check for dirs" or user_input == "I need a check of all needed directories" or user_input == "i need a check of all needed directories":
+        filedir.checkdir(filecheck)
+    # ---------------------------------------------------------------------------------------------------------------------------------
     else:
         print("")
         print user_input_error.e_not_found + "\n"
