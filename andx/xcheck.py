@@ -600,6 +600,7 @@ else:
         print exc + " Could not create directory: " + xgs + site_downloads + xge + " error -> " + str(e19)
         print info + " Exiting..."
         sys.exit(1)
+# -> [SUB_DIR] >> SITE_IMAGES >>> [Site (site) sub_dir_images]
 if os.path.exists(site_images):
     print xgs + "|_" + xge + site_images + " exists..."
     try:
@@ -655,7 +656,10 @@ else:
         print exc + " Could not create directory: " + xgs + site_images + xge + " error -> " + str(e24)
         print info + " Exiting..."
         sys.exit(1)
- 
+# -> [SUB_DIR] >> SITE_CSS >>> [Site (site) sub_dir_css]
+if os.path.exists(site_css):
+    print xgs + "|_" + xge + site_css + xgs + " exists..." + xge
+    
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 if os.path.exists(XBD):
