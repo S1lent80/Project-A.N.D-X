@@ -775,6 +775,7 @@ else:
         print exc + " Could not create directory: " + xgs + site_css + xge + " error -> " + str(e42)
         print info + " Exiting..."
         sys.exit(1)
+# -> [SUB_DIR] SITE_JS >> [Site (site)]
 
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
