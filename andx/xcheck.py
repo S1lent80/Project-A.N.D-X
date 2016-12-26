@@ -292,7 +292,11 @@ else:
 # ---------------------------------------------------------------------------------------------------------------------------------------------
 if os.path.exists(SCANNERS):
     print plus + " Directory: " + xgs + SCANNERS + xge + " exists... Will now check for it's sub-directories..."
-    file1.write("Directory [ Scanners (scanners)]:      " + SCANNERS + " exists...\n")
+    try:
+        file1.write("Directory [ Scanners (scanners)]:      " + SCANNERS + " exists...\n")
+    except IOError as e38:
+        print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e38)
+        pass
     if os.stat(SCANNERS) == 0:
         print minus + " Directory: " + xgs + SCANNERS + xge + " existed, but isn't there now..."
         question_08 = raw_input("Was the directory [M]oved or [D]eleted? : ")
@@ -327,7 +331,11 @@ else:
     print info + " Creating directory: " + xgs + SCANNERS + xge
     try:
         os.makedirs(SCANNERS)
-        file1.write("Directory [ Scanners (scanners)]:     " + SCANNERS + " created...\n")
+        try:
+            file1.write("Directory [ Scanners (scanners)]:     " + SCANNERS + " created...\n")
+        except IOError as e37:
+            print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e37)
+            pass
     except Exception as e5:
         print exc + " Could not create directory: " + xgs + SCANNERS + xge + " error -> " + str(e5)
         print info + " Exiting..."
@@ -349,7 +357,11 @@ else:
 # ------------------------------------------------------------------------------------------------------------------------------------------------
 if os.path.exists(scn_c):
     print xgs + "|__|_" + xge + "[Sub-Dir] - " + xgs + scn_c + xge + " exists..."
-    file1.write("|_[SUB_DIR] - " + scn_c + " exists...\n")
+    try:
+        file1.write("|_[SUB_DIR] - " + scn_c + " exists...\n")
+    except IOError as e36:
+        print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e36)
+        pass
     if os.stat(scn_c) == 0:
         print minus + " Directory: " + xgs + scn_c + xge + " existed, but isn't there now..."
         question_09 = raw_input("Was the directory [M]oved or [D]eleted? : ")
@@ -383,7 +395,11 @@ else:
     print info + " Creating directory: " + xgs + scn_c + xge
     try:
         os.makedirs(scn_c)
-        file1.write("|_[SUB_DIR] - " + scn_c + " created...\n")
+        try:
+            file1.write("|_[SUB_DIR] - " + scn_c + " created...\n")
+        except IOError as e35:
+            print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e35)
+            pass
     except Exception as e9:
         print exc + " Could not create directory: " + xgs + scn_c + xge + " error -> " + str(e9)
         print info + " Exiting..."
@@ -391,7 +407,11 @@ else:
 # -----------------------------------------------------------------------------------------------------------------------------------------------
 if os.path.exists(scn_c_src):
     print xgs + "|____|_" + xge + "[SUB_DIR_C] - " + xgs + scn_c_src + xge + " exists..."
-    file1.write("      |_[SUB_DIR_C] - " + scn_c_src + " exists...\n")
+    try:
+        file1.write("      |_[SUB_DIR_C] - " + scn_c_src + " exists...\n")
+    except IOError as e34:
+        print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e34)
+        pass
     if os.stat(scn_c_src) == 0:
         print minus + " [ SUB ] - Directory: " + xgs + scn_c_src + xge + " existed, but isn't there..."
         question_07 = raw_input("Was the directory [M]oved or [D]eleted? : ")
@@ -425,7 +445,11 @@ else:
     print info + " Creating directory: " + xgs + scn_c_src + xge
     try:
         os.makedirs(scn_c_src)
-        file1.write("|____|_[SUB_DIR_C] - " + scn_c_src + " created...\n")
+        try:
+            file1.write("|____|_[SUB_DIR_C] - " + scn_c_src + " created...\n")
+        except IOError as e33:
+            print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e33)
+        pass
     except Exception as e11:
         print exc + " Could not create directory: " + xgs + scn_c_src + xge + " error -> " + str(e11)
         print info + " Exiting..."
@@ -433,7 +457,11 @@ else:
 # ------------------------------------------------------------------------------------------------------------------------------------------------
 if os.path.exists(scn_c_ps):
     print xgs + "|____|_" + xge + "[SUB_DIR_C] - " + xgs + scn_c_ps + xge + " exists..."
-    file1.write("      |_[SUB_DIR_C] - " + scn_c_ps + " exists...\n")
+    try:
+        file1.write("      |_[SUB_DIR_C] - " + scn_c_ps + " exists...\n")
+    except IOError as e32:
+        print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e32)
+        pass
     if os.stat(scn_c_ps) == 0:
         print minus + " Directory: " + xgs + scn_c_ps + xge + " existed, but isn't there..."
         question_03 = raw_input("Was the directory [M]oved or [D]eleted? : ")
@@ -462,7 +490,11 @@ else:
     print info + " Creating directory: " + xgs + scn_c_ps + xge
     try:
         os.makedirs(scn_c_ps)
-        file1.write("      |_[SUB_DIR_C] - " + scn_c_ps + " created...\n")
+        try:
+            file1.write("      |_[SUB_DIR_C] - " + scn_c_ps + " created...\n")
+        except IOError as e31:
+            print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e31)
+            pass
     except Exception as e13:
         print exc + " Could not create directory: " + xgs + scn_c_ps + xge + " error -> " + str(e13)
         print info + " Exiting..."
@@ -470,7 +502,11 @@ else:
 # ------------------------------------------------------------------------------------------------------------------------------------------------
 if os.path.exists(scn_cpp):
     print xgs + "|_" + xge + "[SUB_DIR] - " + xgs + scn_cpp + xge + " exists..."
-    file1.write("|_[SUB_DIR] - " + scn_cpp + " exists...\n")
+    try:
+        file1.write("|_[SUB_DIR] - " + scn_cpp + " exists...\n")
+    except IOError as e30:
+        print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e30)
+        pass
     if os.stat(scn_cpp) == 0:
         print minus + " Directory: " + xgs + scn_cpp + xge + " existed, but isn't there..."
         question_05 = raw_input("Was the directory [M]oved or [D]eleted? : ")
@@ -502,7 +538,11 @@ else:
     print info + " Creating directory: " + xgs + scn_cpp + xge
     try:
         os.makedirs(scn_cpp)
-        file1.write("|_[SUB_DIR] - " + scn_cpp + " created...\n")
+        try:
+            file1.write("|_[SUB_DIR] - " + scn_cpp + " created...\n")
+        except IOError as e29:
+            print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e29)
+            pass
     except Exception as e15:
         print exc + " Could not create directory: " + xgs + scn_cpp + xge + " error -> " + str(e15)
         print info + " Exiting..."
@@ -510,7 +550,11 @@ else:
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 if os.path.exists(SITE):
     print plus + " Directory: " + xgs + SITE + xge + " exists...  -  Will now check it's sub-directories"
-    file1.write("Directory [Site (site)]:               " + SITE + " exists...\n")
+    try:
+        file1.write("Directory [Site (site)]:               " + SITE + " exists...\n")
+    except IOError as e28:
+        print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e28)
+        pass
     if os.stat(SITE) == 0:
         print minus + " Directory: " + xgs + SITE + xge + " existed, but isn't there anymore...\n"
         question = raw_input("Was the file [M]oved or [D]eleted? : ")
@@ -544,7 +588,11 @@ else:
     print info + " Creating directory: " + xgs + SITE + xge
     try:
         os.makedirs(SITE)
-        file1.write("Directory [Site (site)]:             " + SITE + " created...\n")
+        try:
+            file1.write("Directory [Site (site)]:             " + SITE + " created...\n")
+        except IOError as e27:
+            print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e25)
+            pass
     except Exception as e17:
         print exc + " Could not create directory: " + xgs + SITE + xge + " error -> " + str(e17)
         print info + " Exiting..."
