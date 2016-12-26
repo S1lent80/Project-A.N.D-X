@@ -10,6 +10,8 @@ from optparse import OptionParser
 from tqdm import *
 from time import sleep
 from sys import platform as osid
+## Custom Module Directory ##
+sys.path.insert(0,"modules")
 
 ## Project: A.N.D-X (Andromeda-x)  -  Version: 1.0.0  -  Xver: 1.0 ##
 
@@ -551,7 +553,11 @@ else:
 # -> [SUB_DIR] >> [Site (site)] >>> [Site >> downloads (site)]
 if os.path.exists(site_downloads):
     print xgs + "|_" + xge + site_downloads + " exists..."
-    file1.write("|_[SUB_DIR] - " + site_downloads + "\n")
+    try:
+        file1.write("|_[SUB_DIR] - " + site_downloads + "\n")
+    except IOError as e26:
+        print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e26)
+        pass
     if os.stat(site_downloads) == 0:
         print minus + " The directory: " + xgs + site_downloads + xge + " existed, but isn't there anymore..."
         question01 = raw_input("Was the directory [M]oved or [D]eleted? : ")
@@ -593,7 +599,7 @@ else:
         os.makedirs(site_downloads)
         try:
             file1.write("|_[SUB_DIR] - " + site_downloads + " Created" + "\n")
-        except Exception as e23:
+        except IOError as e23:
             print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e23)
             pass
     except Exception as e19:
@@ -606,7 +612,7 @@ if os.path.exists(site_images):
     try:
         file1.write("|_[SUB-DIR] - " + site_images + " exists...\n")
         pass
-    except Exception as e20:
+    except IOError as e20:
         print minus + " Could not write to file: " + xgs + file1 + xge + " error -> " + str(e20)
         pass
     if os.stat(site_images) == 0:
@@ -649,7 +655,7 @@ else:
         os.makedirs(site_images)
         try:
             file1.write("|_[SUB-DIR] - " + site_images + " created...\n")
-        except Exception as e23:
+        except IOError as e23:
             print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e23)
             pass
     except Exception as e24:
@@ -659,7 +665,24 @@ else:
 # -> [SUB_DIR] >> SITE_CSS >>> [Site (site) sub_dir_css]
 if os.path.exists(site_css):
     print xgs + "|_" + xge + site_css + xgs + " exists..." + xge
-    
+    try:
+        file1.write("|_[SUB-DIR] - " + site_css + " exists...\n")
+    except IOError as e25:
+        print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e25)
+        pass
+# *******************[ TRANSMISSION LOG - 01  -  A  -  S1lent -> [|||||||] ]****************************************************************
+# [|||||||] >> Will this do?
+# S1lent >> Yes, this is fine.
+# [|||||||] >> Ok, but, why like this??? Isn't there another way???
+# S1lent >> Not the way this program will turn out...The tool
+# [|||||||] >> Won't this confuse people??? It did me before I got it, the way you see it...
+# S1lent >> Relax, they will figure it out...Although, it might take them a while...
+# [|||||||] >> A while is kind of underestimating it...
+# S1lent >> Trust me, someone is bound to look through (top  to bottom) of this script and figure out how to read it...
+# [|||||||] >> Has anyone done THAT yet???
+# S1lent >> Lol, no, not yet.
+# ******************[ TRANSMISSION LOG - 01  -  A  -  END ]********************************************************************************    
+
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 if os.path.exists(XBD):
