@@ -12,3 +12,9 @@ tqdm  -      pip install tqdm
 requests  -  pip install requests
 astral  -    pip install astral
 pytz  -      [ Comes with astral (Astral) ]
+
+or:
+pip install tqdm requests atral
+
+on Linux Mint, Ubuntu, Debian
+pip install tqdm request requests astral beautifulsoup matplotlib scipy scapy scrapy
