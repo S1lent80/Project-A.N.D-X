@@ -50,7 +50,7 @@ def msfcheck():
     elif os.path.exists(msf_opt_path) or os.path.join("/opt","/metasploit") or os.path.join("/opt/","metasploit"):
         print plus + " Metasploit path: " + xgs + msf_opt_path + xge + " exists..."
         try:
-            file2.write(",ETASPLOIT_OPT_PATH = " + msf_opt_path + "\n")
+            file2.write("METASPLOIT_OPT_PATH = " + msf_opt_path + "\n")
             pass
         except Exception as e4:
             print minus + " Could not write to file: " + xgs + file2 + xge + " error -> " + str(e4)
