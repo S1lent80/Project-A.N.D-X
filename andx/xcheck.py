@@ -730,6 +730,51 @@ if os.path.exists(site_css):
 # [|||||||] >> Has anyone done THAT yet???
 # S1lent >> Lol, no, not yet.
 # ******************[ TRANSMISSION LOG - 01  -  A  -  END ]********************************************************************************    
+    if os.stat(site_css) == 0:
+        print minus + " The directory: " + xgs + site_css + xge + " existed, but isn't there anymore..."
+        question03 = raw_input("Was the directory [M]oved or [D]eleted? : ")
+        while len(question03) == 0 or len(question03) == 2:
+            print info + " Please enter a valid input..."
+            pass
+        if 'M' or 'm' in question03:
+            newDir2 = raw_input("Enter the new directory: ")
+            while len(newDir2) == 0 or len(newDir2) == 2:
+                print minus + " Please enter a(n) [ Valid ] directory..."
+                pass
+            if os.path.exists(newDir2) or os.path.join(newDir2,"/css") or os.path.join(newDir2,"css"):
+                try:
+                    file1.write("[SUB-DIR] - Alt: " + newDir2 + "\n")
+                except IOError as e39:
+                    print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e25)
+                    pass
+            else:
+                print minus + " Directory " + xgs + newDir2 + xge + " not found..."
+                pass
+        elif 'D' or 'd' in question03:
+            print info + " Creating directory: " + xgs + site_css + xge
+            try:
+                os.makedirs(site_css)
+                pass
+            except KeyboardInterrupt:
+                # print "Manual Program Termination (Ctrl + C)"
+                sys.exit()
+        else:
+            pass
+    else:
+        pass
+else:
+    print info + " Creating directory: " + xgs + site_css + xge
+    try:
+        os.makedirs(site_css)
+        try:
+            file1.write("[SUB-DIR] - " + site_css + " created...")
+        except IOError as e41:
+            print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e25)
+            pass
+    except Exception as e42:
+        print exc + " Could not create directory: " + xgs + site_css + xge + " error -> " + str(e42)
+        print info + " Exiting..."
+        sys.exit(1)
 
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
