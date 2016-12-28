@@ -1,17 +1,24 @@
-import os
-import sys
-import imp 
-import tqdm
-import time
-import getpass
-import optparse
-import platform
-from optparse import OptionParser
-from tqdm import *
-from time import sleep
-from sys import platform as osid
-## Custom Module Directory ##
-sys.path.insert(0,"modules")
+try:
+    import os
+    import sys
+    import imp 
+    import tqdm
+    import time
+    import getpass
+    import optparse
+    import platform
+    from optparse import OptionParser
+    from tqdm import *
+    from time import sleep
+    from sys import platform as osid
+    ## Custom Module Directory ##
+    sys.path.insert(0,"modules")
+    import filewrite
+    from filewrite import writehtml
+except ImportError as e43:
+    print "No module: %s found..." % (e43)
+    print "Exiting..."
+    sys.exit(1)
 
 ## Project: A.N.D-X (Andromeda-x)  -  Version: 1.0.0  -  Xver: 1.0 ##
 
@@ -782,16 +789,24 @@ else:
 if os.path.exists(XBD):
     print("")
     print plus + " Directory: " + xgs + XBD + xge + " exists..."
-    file1.write("\nDirectory [Xbd (xbd)]:                 " + XBD + " exists...\n")
-    file1.close()
+    try:
+        file1.write("\nDirectory [Xbd (xbd)]:                 " + XBD + " exists...\n")
+        file1.close()
+    except IOError as e44:
+        print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e25)
+        pass
     if os.stat(XBD) == 0:
         print minus + " Directory: " + xgs + XBD + xge + " existed, but isn't there anymore..."
         question_04 = raw_input("Was the directory [M]oved or [D]eleted? : ")
         if 'M' in question_04 or 'm' in question_04:
             dir_04 = raw_input("Enter the new directory: ")
             if os.path.exists(dir_04) or os.path.join(dir_04,"/xbd") or os.path.join(dir_04,"xbd"):
-                file1.write("Directory [ Alt ] Xbd (xbd):    " + XBD + "\n")
-                file1.close()
+                try:
+                    file1.write("Directory [ Alt ] Xbd (xbd):    " + XBD + "\n")
+                    file1.close()
+                except IOError as e45:
+                    print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e45)
+                    pass
             else:
                 print minus + " Could not find directory..."
                 print info + " Exiting..."
@@ -813,8 +828,12 @@ else:
     print info + " Creating directory: " + xgs + XBD + xge
     try:
         os.makedirs(XBD)
-        file1.write("Directory [ Xbd (xbd)]:                 " + XBD + " created...\n")
-        file1.close()
+        try:
+            file1.write("Directory [ Xbd (xbd)]:                 " + XBD + " created...\n")
+            file1.close()
+        except IOError as e46:
+            print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e46)
+            pass
     except Exception as e7:
         print exc + " Could not create directory: " + xgs + XBD + xge + " error -> " + str(e7)
         print info + " Exiting..."
