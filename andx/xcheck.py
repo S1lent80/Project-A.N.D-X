@@ -16,7 +16,7 @@ try:
     import filewrite
     from filewrite import writehtml
 except ImportError as e43:
-    print "No module: %s found..." % (e43)
+    print "[ ERROR ] - %s..." % (e43)
     print "Exiting..."
     sys.exit(1)
 
@@ -783,6 +783,62 @@ else:
         print info + " Exiting..."
         sys.exit(1)
 # -> [SUB_DIR] SITE_JS >> [Site (site)]
+if os.path.exists(site_js):
+    print xgs + "|_" + xge + site_js + xgs + " exists..." + xge
+    try:
+        file1.write("|_[SUB-DIR] - " + site_js + " exists...\n")
+        pass
+    except IOError as e47:
+        print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e47)
+        pass
+    if os.stat(site_js) == 0:
+        print minus + " The directory: " + xgs + site_js + xge + " existed, but isn't there anymore..."
+        question04 = raw_input("Was the directory [M]oved or [D]eleted? : ")
+        while not 'M' or 'm' or 'D' or 'd' in question04 or len(question04) == 0:
+            print minus + " Please enter a valid input..."
+        if 'M' or 'm' in question04:
+            newDir3 = raw_input("Enter the new directory: ")
+            while not os.path.exists(newDir3) or len(newDir3) == 0:
+                print minus + " Please enter a valid directory..."
+            if os.path.exists(newDir3) or os.path.join(newDir3,"/javascript") or os.path.join(newDir3,"javascript"):
+                try:
+                    file1.write("|_[SUB-DIR] - Alt: " + newDir3 + "\n")
+                    pass
+                except IOError as e48:
+                    print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e48)
+                    pass
+            else:
+                print minus + " Could not find the directory..."
+                pass
+        elif 'D' or 'd' in question04:
+            print info + " Creating directory: " + xgs + site_js + xge
+            try:
+                os.makedirs(site_js)
+            except KeyboardInterrupt:
+                # print "Manual Program Termination (Ctrl + C)"
+                sys.exit()
+            except Exception as e49:
+                print exc + " Could not create directory: " + xgs + site_js + xge + " error -> " + str(e49)
+                print info + " Exiting..."
+                sys.exit(1)
+        else:
+            pass
+    else:
+        pass
+else:
+    print info + " Creating directory: " + xgs + site_js + xge
+    try:
+        os.makedirs(site_js)
+        try:
+            file1.write("|_[SUB-DIR] - " + site_js + " created...\n")
+            pass
+        except IOError as e50:
+            print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e50)
+            pass
+    except Exception as e51:
+        print exc + " Could not create directory: " + xgs + site_js + xge + " error -> " + str(e51)
+        print info + " Exiting..."
+        sys.exit(1)
 
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
