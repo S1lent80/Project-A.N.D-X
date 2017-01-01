@@ -607,7 +607,7 @@ else:
 # Create the sub-directories for the main directory [ Site (site)]
 # -> [SUB_DIR] >> [Site (site)] >>> [Site >> downloads (site)]
 if os.path.exists(site_downloads):
-    print xgs + "|_" + xge + site_downloads + " exists..."
+    print xgs + "|_" + xge + site_downloads + xgs + " exists..." + xge
     try:
         file1.write("|_[SUB_DIR] - " + site_downloads + "\n")
     except IOError as e26:
@@ -663,7 +663,7 @@ else:
         sys.exit(1)
 # -> [SUB_DIR] >> SITE_IMAGES >>> [Site (site) sub_dir_images]
 if os.path.exists(site_images):
-    print xgs + "|_" + xge + site_images + " exists..."
+    print xgs + "|_" + xge + site_images + xgs + " exists..." + xge
     try:
         file1.write("|_[SUB-DIR] - " + site_images + " exists...\n")
         pass
@@ -838,6 +838,59 @@ else:
     except Exception as e51:
         print exc + " Could not create directory: " + xgs + site_js + xge + " error -> " + str(e51)
         print info + " Exiting..."
+        sys.exit(1)
+# -> [SUB_DIR] >> SITE_PHP (Site [site])
+if os.path.exists(site_php):
+    print xgs + "|_" + xge + site_php + xgs + " exists..." + xge
+    try:
+        file1.write("|_[SUB-DIR] - " + site_php + " exists...\n")
+        pass
+    except IOError as e52:
+        print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e52)
+        pass
+    if os.stat(site_php) == 0:
+        print minus + " Directory: " + xgs + site_php + xge + " existed, but isn't there anymore..."
+        question05 = raw_input("Was the directory [M]oved or [D]eleted? : ")
+        while len(question05) == 0 or len(question05) < 1:
+            print info + " Please enter a valid input..."
+        if 'M' or 'm' in question05:
+            newDir4 = raw_input("Enter the new directory: ")
+            while len(newDir4) == 0 or len(newDir4) >= 2 or 'help' in newDir4:
+                print minus + " Please enter the path to the new directory..."
+            if os.path.exists(newDir4) or os.path.join(newDir4,"/php") or os.path.join(newDir4,"php"):
+                file1.write("|_[SUB-DIR] - Alt: " + newDir4 + "\n")
+                pass
+            else:
+                print minus + " Path: " + xgs + newDir4 + xge + " could not be found..."
+        elif 'D' or 'd' in question05:
+            print info + " Creating directory: " + xgs + site_php + xge
+            try:
+                os.makedirs(site_php)
+                pass
+            except KeyboardInterrupt:
+                # print "Manual Program Termination (Ctrl + C)"
+                sys.exit(1)
+            except Exception as e53:
+                print exc + " Could not create directory: " + xgs + site_php + xge + " error -> " + str(e25)
+                print info + " Exiting..."
+                sys.exit(1)
+        else:
+            pass
+    else:
+        pass
+else:
+    print info + " Creating directory: " + xgs + site_php + xge
+    try:
+        os.makedirs(site_php)
+        try:
+            file1.write("|_[SUB-DIR] - " + site_php + " created...\n")
+            pass
+        except IOError as e26:
+            print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e26)
+            pass
+    except Exception as e27:
+        print exc + " Could not create directory: " + xgs + site_php + xge + " error -> " + str(e26)
+        print info + "Exiting..."
         sys.exit(1)
 
 
