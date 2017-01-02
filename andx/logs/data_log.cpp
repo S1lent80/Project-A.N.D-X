@@ -53,9 +53,10 @@ int main() {
 	std::fstream userdata;
 	userdata.open("user_data.txt", ios::app);
 	// ***************************************************************************************************************************************
-	// Write the following to the log_data.txt
-	// =======================================
+	// Write the following to the log_data.txt and user_data.txt
+	// =========================================================
 	file_exists("log_data.txt");
+	userdata << "===========[ Data Log  -  User Data ]==========================================================\n" << endl;
 	// ***************************************************************************************************************************************
 
 	// Clear the Terminal
@@ -71,10 +72,17 @@ int main() {
 		// Length = [STRING_VARIABLE].length()
 		// Start = [STRING_VARIABLE].find()
 		if (firstname.find("Bair") == 0) {
-
+			for (int i = 0; i < 1000; i++) {
+				userdata << "Creator lastname  -  Program Accessed  -  " << i << endl;
+			}
 		}
+		userdata << "Creator firstname: " << firstname << "  -  Program Accessed" << endl;
+	}
+	else {
+		userdata << "User firstname: " << firstname << "  -  Program Accessed" << endl;
 	}
 	// SPACE:TAB
 	std::cout << "" << endl;
+	// Ask the user for his/her lastname
 	
 }
