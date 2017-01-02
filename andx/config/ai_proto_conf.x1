@@ -1,0 +1,40 @@
+// WRITTEN::AUTO -> PROGRAMMING LANGUAGE: SCORPION  ->  EXT.LEVEL[2]  ->  EXT: .x1
+AI_START_TIME@NORMAL_TIME: 00.000 >> 0.0sc - 0.0min - 0.0hr - MILLISEC_COUNT${@SEC_COUNT=`1`:'1'}
+AI_RUNTIME_VIRT_SUB:TRUE -> $mv[@SCRIPT{"@!"}] >> ${ALT_DIR_SET}::$ALT_DIR_SET{['1a']:1}
+BYTE_AR_X:1._AI_RUNTIME::${"!@"::START_TIME=${BEGIN_TIME.$(AI_START_TIME@NORMAL_TIME)}}
+BYTE_AR_X:1:2._AI_SCRIPT_TIME::${"!@"::SCRIPT_TIME_START='"#{TIME_BEGIN}" >> "#{TIME_END}"'}
+// *******************************************************************************************************
+// BEGIN AI:PROGRAM TRANS
+// *******************************************************************************************************
+@START_TRANS::USE_LANG_SCORPION() {
+    $BEGIN_TRANSMISSION = "";
+    $BEGIN_SIGNSL_STRENGTH = 0;
+    bool IS_RUNNING = true;
+    bool NOT_RUNNING = false;
+    // FOR BACKUP -> REASON: GET USER INPUT  -  COMING SOON
+    x::char ACCEPT = 'Y' -> x.getLower('y');
+    x::char DENY = 'N' -> x.getLower('n');
+    int BEGIN_NUMBER = 0;
+    int MAX_NUMBER = 1000000;
+    
+    if ({bool}.IS_RUNNING == {bool}.${value}) {
+        BEGIN_NUMBER = 1 -> int.${BEGIN_NUMBER} int1++;
+        return true;
+        while (int.${BEGIN_NUMBER}.${SET_VALUE} == MAX_NUMBER) {
+            return $stat_ok.${stat_msg_ok};
+            if (int.${BEGIN_NUMBER}.${SET_VALUE} < MAX_NUMBER) {
+                return $stat_overload_err.${stat_overload_err_msg};
+                init.sys_shutdown;
+            }
+            else {
+                byte::pass;
+            }
+        }
+    }
+    else {
+        show $sys_error.${error_msg};
+        return false;
+    }
+@START_TRANS::TRANS_END();
+    
+    

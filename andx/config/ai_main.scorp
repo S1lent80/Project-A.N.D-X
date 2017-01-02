@@ -1,0 +1,35 @@
+include -> "proto_conf"
+include -> "proto_socket"
+include -> "prim_ext_lib"
+include -> "sec_ext_lib"
+include -> "x_io"
+include -> "x_io_all"
+include -> "xmath"
+
+use "${proto_conf::mod.#{1}}";
+
+x_intimate::if (#{PROTO_CONF._conf_.getStat(bool IS_RUNNING).${VALUE} == true) {
+    byte::pass;
+    return #{PROTO_CONF._getStat(is_ok)};
+}
+
+// OUTER DEFINITIONS
+int $SIZE = 30;
+int $MAX_SIZE = 200;
+
+x::const int[$SIZE]._store_ = [];
+x::const int[$MAX_SIZE]._store_ = [];
+
+PROG_STRUCT struct_1 {
+    // EMPTY
+}
+
+x::func main() {
+    // FUNCTION  MAIN
+       
+}
+
+// PROGRAM TERMINATED::END OF PROGRAM
+
+// S1lent
+
