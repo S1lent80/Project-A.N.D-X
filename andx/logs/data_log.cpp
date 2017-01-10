@@ -24,7 +24,8 @@ int SIZE = 20;
 void banner(std::string, int a);
 void write_data(std::string, int a2, int b);
 void data_num(int a3, int b2, int c);
-void param_get(std::string, char, int a, int b, std::fstream, std::fstream, std::fstream);
+void param_get(std::string, char, int a, int b);
+void cmd_a(std::string, char, int[2], int);
 
 
 // Functions
@@ -180,6 +181,7 @@ void param_get(std::string param, char assign_char, int a, int b)
 		if (b < 1) 
 		{
 			// int_data << "X.INT([$]:int)._int_value_.value = " << b << endl;
+			std::cout << "Focus-Point: 2  -  Position: 2  -  Value: True" << endl;
 		}
 		else
 		{
@@ -193,13 +195,47 @@ void param_get(std::string param, char assign_char, int a, int b)
 	}
 }
 
+void cmd_a(std::string cmd_begin, char str, int num) 
+{
+	// Define a few things
+	std::string file;
+	std::string input;
+	// Command just for fun
+	if (cmd_begin.length() == 0 && str == 0 && num == 0) {
+		std::cout << "\nString in command not found...\n" << endl;
+	}
+	else
+	{
+		// Empty
+	}
+	if (cmd_begin.length() == '4' && str == 'a' && num == '1')
+	{
+		std::cout << cmd_begin.length() << " : " << str << " : " << num << endl;
+	}
+	
+}
+
+// Classes
+
+
+
 // Structures
+struct standard_focus 
+{
+	// Standard Structure
+	int a4;
+	int b3;
+};
+
+
+// Enumarators
 
 
 
 // **********************************************************************************************************************************************
 
-int main() {
+int main() 
+{
 	// Internal definitions
 	std::string firstname;			// Firstname = String
 	std::string lastname;			// Lastname = String
@@ -217,6 +253,8 @@ int main() {
 	int_data.open("data/int_data.txt", ios::app);
 	userdata.open("user_data.txt", ios::app);
 	data_conf.open("conf/data_conf.txt", ios::app);
+	// Structures
+	standard_focus focus1;
 	// ***************************************************************************************************************************************
 	// Write the following to the log_data.txt and user_data.txt
 	// =========================================================
@@ -250,6 +288,7 @@ int main() {
 		userdata << "Creator firstname: " << firstname << "  -  Program Accessed" << endl;
 		data_conf << "X.STRING._char_.$val[$] = ${CALL=$['c++'.'cpp' >> ${var} << $@ >> 'else {$val='creator_firstname'}']}" << endl;
 		data_num(1, 0, 0);
+		focus1.a4 = 1;
 	}
 	else 
 	{
