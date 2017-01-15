@@ -1,5 +1,6 @@
 import os
 import sys
+import codecs
 import base64
 import binascii
 
@@ -39,6 +40,18 @@ def opt_2_banner():
 	print xys + "\t\tBase64 Decode Mode" + ce + "\n"
 	print xgs + "=" * 89 + ce + "\n\n"
 
+# Classes
+class cmd_access:
+	@staticmethod
+	# Options
+	def enc_str(a):
+		choice = raw_input("\nWhich encoding should I use? [B]ase64 [H]ex: ")
+		# If else statements
+		pass
+
+	def prompt():
+		a = raw_input(xgs + "X:PROMPT> " + ce)
+
 
 # Main
 menu = {}
@@ -63,10 +76,14 @@ while True:
 		string_1 = raw_input(xgs + "Decode Hex string: " + ce)
 		if len(string_1) == 0:
 			print xrs + "[-]" + ce + " Please input a Hex string for me to decode..."
-		a = string_1
-		b = binascii.a2b_hex(a)
+		elif string_1 == "x_prompt" or string_1 == "prompt" or string_1 == "xcmd":
+			cmd_access.prompt()
+			pass
+		# a = string_1
+		# b = binascii.a2b_hex(a)
+		# a2 = codecs.getdecoder(a)
 		print("")
-		print xgs + "[+]" + ce + " The Hex string is: " + xys + b + ce
+		print string_1.decode('hex')
 		os.system("read -p 1 line")
 		os.system("clear")
 	elif select == '2':
