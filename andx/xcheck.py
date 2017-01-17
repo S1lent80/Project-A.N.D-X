@@ -202,9 +202,13 @@ else:
 # ------------------------------------------------------------------------------------------------------------------------------------------------
 if os.path.exists(CONFIG):
     print plus + " Directory: " + xgs + CONFIG + xge + " exists..."
-    file1 = open(xconfig,"w")
-    file1.write("==========[ Xcheck " + __version__ + " ]==============================================\n\n")
-    file1.write("Directory [Config (config)]:           " + CONFIG + " exists...\n")
+    try:
+        file1 = open(xconfig,"w")
+        file1.write("==========[ Xcheck " + __version__ + " ]==============================================\n\n")
+        file1.write("Directory [Config (config)]:           " + CONFIG + " exists...\n")
+    except IOError as e54:
+        print "Unable to open file: " + xgs + xconfig + xge + " error -> " + str(e54)
+        pass
     if os.stat(CONFIG) == 0:
         print minus + " Directory: " + xgs + CONFIG + xge + " existed, but isn't there now..."
         question_02 = raw_input("Was the directory [M]oved or [D]eleted? : ")
@@ -228,9 +232,6 @@ if os.path.exists(CONFIG):
                 sys.exit(1)
             except Exception as e:
                 print exc + " Could not create directory: " + xgs + CONFIG + xge + " error -> " + str(e)
-                # Write to log file
-                file2 = open(xlog_a,"w")
-                file2.write("[ ERROR ]: " + str(e) + "\n")
                 print info + " Exiting..."
                 sys.exit(1)
         if not 'M' or 'm' or 'D' or 'd' in question_02 or len(question_02) == 0:
@@ -249,7 +250,7 @@ else:
     except Exception as e:
         print exc + " Could not create directory: " + xgs + CONFIG + xge + " error -> " + str(e)
         # Write to log file
-        file2.write("[ ERROR ]: " + str(e) + "\n")
+        file1.write("\n[ ERROR ] -> " + str(e) + "\n")
         print info + " Exiting..."
         sys.exit(1)
 # ----------------------------------------------------------------------------------------------------------------------------------------------
@@ -892,6 +893,66 @@ else:
         print exc + " Could not create directory: " + xgs + site_php + xge + " error -> " + str(e26)
         print info + "Exiting..."
         sys.exit(1)
+# -> [SUB_DIR] >> SITE_JAVA (Site [site])
+if os.path.exists(site_java):
+    print xgs + "|_" + xge + site_java + xgs + " exists..." + xge
+    try:
+        file1.write("|_[SUB-DIR] - " + site_java + " exists...")
+        pass
+    except IOError as e55:
+        print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e55)
+        pass
+    if os.stat(site_java) == 0:
+        print minus + " Directory: " + xgs + site_java + xge + " was there before, but isn't there now..."
+        question = raw_input("Was the directory [M]oved or [D]eleted: ")
+        while len(question) == 0 or question == "help":
+            print("")
+            print info + " Just press M or m or D or d"
+            print("")
+        if 'M' or 'm' in question:
+            new_dir = raw_input("Where is the new directory located? : ")
+            while len(new_dir) == 0:
+                print("")
+                print info + " Please input a directory i.e: '/root/andx/site' or something like that..."
+                print("")
+            if os.path.exists(new_dir) or os.path.join(new_dir,"/java") or os.path.join(new_dir,"java"):
+                file1.write("|_[SUB-DIR] - Alt: " + new_dir + "\n")
+                pass
+            else:
+                print("")
+                print minus + " Could not find the directory specified..."
+                print("")
+        elif 'D' or 'd' in question:
+            print info + " Creating directory: " + xgs + site_java + xge
+            try:
+                os.makedirs(site_java)
+            except KeyboardInterrupt:
+                # print "Manual Program Termination (Ctrl + C)"
+                sys.exit(1)
+            except Exception as e56:
+                print exc + " Could not create directory: " + xgs + site_java + xge + " error -> " + str(e56)
+                print info + " Exiting..."
+                sys.exit(1)
+        else:
+            pass
+    else:
+        pass
+else:
+    print info + " Creating directory: " + xgs + site_java + xge
+    try:
+        os.makedirs(site_java)
+        pass
+        try:
+            file1.write("|_[SUB-DIR] - " + site_java + " created...\n")
+            pass
+        except IOError as e57:
+            print minus + " Could not write to file: " + xgs + xconfig + xge + " error -> " + str(e57)
+            pass
+    except Exception as e58:
+        print exc + " Could not create directory: " + xgs + site_java + xge + " error -> " + str(e58)
+        print info + " Exiting..."
+        sys.exit(1)
+
 
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
