@@ -19,9 +19,6 @@ except ImportError as e43:
     print "[ ERROR ] - %s..." % (e43)
     print "\nI will attempt to install the modules...\n"
     os.system('pip install tqdm')
-finally:
-    print "Exiting..."
-    sys.exit(1)
 
 ## Project: A.N.D-X (Andromeda-x)  -  Version: 1.0.0  -  Xver: 1.0 ##
 
