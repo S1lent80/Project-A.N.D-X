@@ -5,3 +5,5 @@ If any of you might be wondering why the project was left unfinished for that lo
 
 Disclaimer: FOR LINUX ONLY
 
+# Chat integrated
+The chat program is an integration to this program (framework) and the package will be included as .tar.gz (specifically: Chat.tar.gz) so it will complete this huge project.
